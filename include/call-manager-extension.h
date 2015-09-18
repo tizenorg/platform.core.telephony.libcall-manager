@@ -246,9 +246,6 @@ int cm_speaker_off (cm_client_h handle);
 int cm_bluetooth_on (cm_client_h handle);
 int cm_bluetooth_off (cm_client_h handle);
 int cm_set_extra_vol (cm_client_h handle, gboolean is_extra_vol);
-#ifdef SUPPORT_NOISE_REDUCTION
-int cm_set_noise_reduction (cm_client_h handle, gboolean is_noise_reduction);
-#endif
 int cm_set_mute_state(cm_client_h handle, gboolean is_mute_state);
 int cm_start_dtmf(cm_client_h handle, unsigned char dtmf_digit);
 int cm_stop_dtmf(cm_client_h handle);

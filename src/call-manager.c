@@ -922,38 +922,6 @@ EXPORT_API int cm_set_extra_vol(cm_client_h handle, gboolean is_extra_vol)
 	 return value;
 }
 
-#ifdef SUPPORT_NOISE_REDUCTION
-EXPORT_API int cm_set_noise_reduction(cm_client_h handle, gboolean is_noise_reduction)
-{
-	GVariant *dbus_result;
-	GError *error = NULL;
-	gint value = 0;
-	dbg(">>");
-	CM_RETURN_VAL_IF_FAIL(handle, CM_ERROR_INVALID_PARAMETER);
-
-	dbus_result = g_dbus_connection_call_sync(handle->dbus_conn, DBUS_CALL_MANAGER,
-			DBUS_CALL_MANAGER_PATH, DBUS_CALL_MANAGER_DEFAULT_INTERFACE, DBUS_CALL_MANAGER_METHOD_SET_NOISE_REDUCTION,
-			g_variant_new("(b)", is_noise_reduction), NULL, G_DBUS_CALL_FLAGS_NONE,
-			CM_DEFAULT_TIMEOUT, handle->ca, &error);
-
-	if (error) {
-		err("Failed: %s", error->message);
-		g_error_free(error);
-		return CM_ERROR_OPERATION_FAILED;
-	}
-
-	if (!dbus_result) {
-		err("no result");
-		return CM_ERROR_OPERATION_FAILED;
-	}
-
-	 g_variant_get(dbus_result, "(i)", &value);
-	 g_variant_unref(dbus_result);
-
-	 return value;
-}
-#endif
-
 EXPORT_API int cm_set_mute_state(cm_client_h handle, gboolean is_mute_state)
 {
 	GVariant *dbus_result;
