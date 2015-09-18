@@ -251,10 +251,9 @@ static void __print_menu(void)
 	g_print("%-40s: Get all call data\n", "38.getallcalldata");
 	g_print("%-40s: Reject call\n", "39.reject");
 	g_print("%-40s: Get call status\n", "40.get_callstatus");
-	g_print("%-40s: Set noise reduction on/off\n", "41.noise_reduction");
-	g_print("%-40s: Set Mute Status Changed Cb\n", "42.setmutestatuscb");
-	g_print("%-40s: Unset Mute Status Changed Cb\n", "43.unsetmutestatuscb");
-	g_print("%-40s: Get Mute State\n", "44.getmutestatus");
+	g_print("%-40s: Set Mute Status Changed Cb\n", "41.setmutestatuscb");
+	g_print("%-40s: Unset Mute Status Changed Cb\n", "42.unsetmutestatuscb");
+	g_print("%-40s: Get Mute State\n", "43.getmutestatus");
 	g_print("+++++++++++++++++++++++++++++++++++++\n");
 }
 
@@ -633,40 +632,21 @@ static gboolean __process_input(gchar * buffer)
 		} else {
 			g_print("!!!!!!!!!!!!!!!!Not initialized!!!!!!!!!!!!!!!!!!!!!\n");
 		}
-	} 
-#ifdef SUPPORT_NOISE_REDUCTION
-	else if ((g_strcmp0(strsplits[0], "41") == 0) || (g_strcmp0(strsplits[0], "noise_reduction") == 0)) {
-		if (cm_handle) {
-			if (strsplits[1] == NULL) {
-				g_print("!!!!!!!!!!!!!!!!Enter \"on\" or \"off\"!!!!!!!!!!!!!!!!!!!!!\n");
-			} else {
-				g_print(">>>>>>Noise reduction %s\n", strsplits[1]);
-				if (g_strcmp0(strsplits[1], "on") == 0) {
-					cm_set_noise_reduction(cm_handle, 1);
-				} else {
-					cm_set_noise_reduction(cm_handle, 0);
-				}
-			}
-		} else {
-			g_print("!!!!!!!!!!!!!!!!Not initialized!!!!!!!!!!!!!!!!!!!!!\n");
-		}
-	}
-#endif
-	else if ((g_strcmp0(strsplits[0], "42") == 0) || (g_strcmp0(strsplits[0], "setmutestatuscb") == 0)) {
+	} else if ((g_strcmp0(strsplits[0], "41") == 0) || (g_strcmp0(strsplits[0], "setmutestatuscb") == 0)) {
 		if (cm_handle) {
 			g_print(">>>>>>Monitor Mute Status Change\n");
 			cm_set_mute_status_cb(cm_handle, __mute_status_changed_cb, NULL);
 		} else {
 			g_print("!!!!!!!!!!!!!!!!Not initialized!!!!!!!!!!!!!!!!!!!!!\n");
 		}
-	} else if ((g_strcmp0(strsplits[0], "43") == 0) || (g_strcmp0(strsplits[0], "unsetmutestatuscb") == 0)) {
+	} else if ((g_strcmp0(strsplits[0], "42") == 0) || (g_strcmp0(strsplits[0], "unsetmutestatuscb") == 0)) {
 		if (cm_handle) {
 			g_print(">>>>>>Stop monitor Mute Status Change\n");
 			cm_unset_mute_status_cb(cm_handle);
 		} else {
 			g_print("!!!!!!!!!!!!!!!!Not initialized!!!!!!!!!!!!!!!!!!!!!\n");
 		}
-	} else if ((g_strcmp0(strsplits[0], "44") == 0) || (g_strcmp0(strsplits[0], "getmutestatus") == 0)) {
+	} else if ((g_strcmp0(strsplits[0], "43") == 0) || (g_strcmp0(strsplits[0], "getmutestatus") == 0)) {
 		if (cm_handle) {
 			cm_mute_status_e mute_status;
 			cm_get_mute_status(cm_handle, &mute_status);
