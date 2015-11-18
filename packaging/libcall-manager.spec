@@ -1,6 +1,6 @@
 %define major 0
 %define minor 0
-%define patchlevel 2
+%define patchlevel 5
 %define ext_feature 0
 
 Name:           libcall-manager
