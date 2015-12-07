@@ -1,7 +1,4 @@
 <manifest>
-	<assign>
-		<filesystem path="/usr/bin/cm-test" exec_label="callmgr"/>
-	</assign>
 	<request>
 		<domain name="_"/>
 	</request>
