@@ -253,7 +253,7 @@ static void __cm_on_signal_recv(GDBusConnection *conn, const gchar *name,
 		cm_vr_status_e vr_status = -1;
 		cm_vr_status_extra_type_e extra_type;
 
-		g_variant_get (param, "(ii)", &vr_status, &extra_type);
+		g_variant_get(param, "(ii)", &vr_status, &extra_type);
 		dbg("received vr_status: '%d', extra_type: 0x%02x", vr_status, extra_type);
 
 		((cm_voice_record_status_cb)ad->cb_fn)(vr_status, extra_type, ad->user_data);
@@ -1936,7 +1936,7 @@ EXPORT_API int cm_set_voice_record_status_cb(cm_client_h handle, cm_voice_record
 	return __cm_set_cb(handle, DBUS_CALL_MANAGER_SIGNAL_VOICE_RECORD_STATUS, cb, user_data);
 }
 
-EXPORT_API int cm_unset_voice_record_status_cb (cm_client_h handle)
+EXPORT_API int cm_unset_voice_record_status_cb(cm_client_h handle)
 {
 	CM_RETURN_VAL_IF_FAIL(handle, CM_ERROR_INVALID_PARAMETER);
 	return __cm_unset_cb(handle, DBUS_CALL_MANAGER_SIGNAL_VOICE_RECORD_STATUS);
