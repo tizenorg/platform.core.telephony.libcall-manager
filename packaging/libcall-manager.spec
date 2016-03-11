@@ -1,6 +1,6 @@
 %define major 0
 %define minor 0
-%define patchlevel 7
+%define patchlevel 8
 %define ext_feature 0
 
 Name:           libcall-manager
@@ -23,7 +23,7 @@ BuildRequires: pkgconfig(capi-system-info)
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
 
-%if "%{?profile}" != "mobile"
+%if "%{?profile}" != "mobile" && "%{profile}" != "ivi"
 ExcludeArch: %{arm} %ix86 x86_64
 %endif
 
