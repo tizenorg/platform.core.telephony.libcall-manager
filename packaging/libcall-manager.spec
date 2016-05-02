@@ -1,6 +1,6 @@
 %define major 0
 %define minor 0
-%define patchlevel 9
+%define patchlevel 10
 %define ext_feature 0
 
 Name:           libcall-manager
@@ -66,14 +66,14 @@ cp LICENSE %{buildroot}/usr/share/license/libcall-manager
 
 %files
 %manifest libcall-manager.manifest
-%defattr(644,system,system,-)
+%defattr(644,root,root,-)
 %{_datadir}/license/libcall-manager
-%attr(755,system,system) %{_bindir}/cm-test
+%attr(755,root,root) %{_bindir}/cm-test
 %{_libdir}/*.so.*
 
 %files devel
 # callmgr client
-%defattr(644,system,system,-)
+%defattr(644,root,root,-)
 %{_libdir}/libcall-manager.so
 %{_includedir}/call-manager/*
 %{_libdir}/pkgconfig/callmgr_client.pc
